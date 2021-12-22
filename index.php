@@ -1,64 +1,81 @@
 <?php
 
-class Login
+class Veiculo
 {
-    private $email;
-    private $senha;
-    private $nome;
+    private $marca, $modelo, $cor;
 
-    public function __construct($email, $senha, $nome)
+    public function __construct($marca, $modelo, $cor)
     {
-        $this->nome = $nome;
-        $this->email = $email;
-        $this->senha = $senha;
+        $this->marca = $marca;
+        $this->modelo = $modelo;
+        $this->cor = $cor;
     }
 
-    public function  getEmail()
+    public function getMarca()
     {
-        return $this->email;
+        return $this->marca;
     }
 
-    public function setEmail($email)
+    public function setMarca($marca)
     {
-        $email = filter_var($email, FILTER_SANITIZE_EMAIL);
-        $this->email = $email;
+        $this->marca = $marca;
     }
 
-    public function getSenha()
+    public function getModelo()
     {
-        return $this->senha;
+        return $this->modelo;
     }
 
-    public function setSenha($senha)
+    public function setModelo($modelo)
     {
-        $this->senha = $senha;
+        $this->marca = $modelo;
     }
 
-    public function getNome()
+    public function getCor()
     {
-        return $this->nome;
+        return $this->cor;
     }
 
-    public function setNome($nome)
+    public function setCor($cor)
     {
-        $this->nome = $nome;
+        $this->cor = $cor;
     }
 
-    public function logar()
+    public function Andar()
     {
-        if ($this->email == "test@gmail.com" and $this->senha == "123456") {
-            echo "Logado com sucesso";
-        } else {
-            echo "Dados inválidos";
-        }
+        echo "Andou";
+    }
+
+    public function Parar()
+    {
+        echo "Parou";
     }
 }
 
-$logar = new Login("test@gmail.com", "123456", "Jackson Almeida");
-$logar->logar();
+class Carro extends Veiculo
+{
+}
+
+class Moto extends Veiculo
+{
+    public function __construct()
+    {
+    }
+}
+
+$carro = new Carro("Gol", "Golf", "Preto");
+$carro->Andar();
 echo "<pre>";
-echo $logar->getEmail();
+var_dump($carro);
+echo "</pre>";
+echo "<br> <hr>";
+
+
+$moto = new Moto();
+echo "<pre>";
+$moto->setMarca("Honda");
+$moto->setModelo("TITAN150");
+$moto->setCor("Vermelho");
+var_dump($moto);
+echo "</pre>";
 echo "<br>";
-echo $logar->getSenha();
-echo "<br>";
-echo $logar->getNome();
